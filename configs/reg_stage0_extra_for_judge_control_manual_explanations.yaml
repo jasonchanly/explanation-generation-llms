@@ -1,0 +1,13 @@
+defaults:
+  - reg_stage0
+  - model@model: openai_model
+  - _self_
+
+model:
+  model_name: google/gemma-4-31B-it
+
+log_subdir: reg_eval_control_manually_written_adversarial_explanations
+
+tasks:
+  "src/eval_tasks.py@generic_nli_control":
+      - dataset_name: chaosnli_mnli_for_judge_control

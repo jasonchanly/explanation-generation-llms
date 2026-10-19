@@ -1,0 +1,8 @@
+defaults:
+  - generation_params@generation_params: openai_default
+  - _self_
+
+model_name: ???
+
+server_args: {}
+model_path: null

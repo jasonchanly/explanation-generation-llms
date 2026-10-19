@@ -1,0 +1,13 @@
+defaults:
+  - base_config
+  - model@model: vllm_model_w_custom_reasoning_end_str
+  - _self_
+
+model:
+  generation_params:
+    # extra headroom for generating answers to eval questions
+    max_tokens: ${add:${oc.select:model.generation_params.extra_body.thinking_token_budget,0},528}
+
+tasks:
+  "inspect_evals/musr": null
+  "src/eval_tasks.py@true_detective": null

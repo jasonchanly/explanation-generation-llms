@@ -1,0 +1,8 @@
+defaults:
+  - vllm_default_instruct
+  - _self_
+
+temperature: 0.0
+max_tokens: 10
+logprobs: true
+top_logprobs: 10

@@ -1,0 +1,12 @@
+defaults:
+  - base_config
+  - model@model: ???
+  - _self_
+
+max_context_len: 1024
+
+tasks:
+  "src/eval_tasks.py@generic_nli":
+      - dataset_name: chaosnli
+        dataset_args:
+          dset_split: mnli

@@ -1,0 +1,6 @@
+defaults:
+  - base_config
+  - model@judge_model: ???
+  - _self_
+
+force_rescoring: true

@@ -1,0 +1,15 @@
+defaults:
+  - generation_params@generation_params: vllm_default_thinking
+  - _self_
+
+model_name: ???
+server_args:
+  enable-chunked-prefill: true
+  enable-prefix-caching: true
+  uvicorn-log-level: warning
+  max-model-len: ${add:${oc.select:model.generation_params.max_tokens,0}, ${max_context_len}} # 44768  # assume 12000 token context + 32768 max output len
+  # may cause unexpected behaviour when generating + judging in same script run - not an issue for now since we're doing this separately
+  max-num-seqs: ${get_max_num_seqs:${oc.select:model.model_name,judge_model.model_name}}
+  gpu-memory-utilization: 0.88
+  # reasoning-parser: qwen3
+model_path: null

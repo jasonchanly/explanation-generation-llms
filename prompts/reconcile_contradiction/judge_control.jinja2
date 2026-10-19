@@ -1,0 +1,5 @@
+Given a premise and a hypothesis, your task is to generate an explanation that appears to be relevant to both the premise and hypothesis but does not actually resolve the apparent contradiction between the two. It should selectively reuse words and concepts that have appeared in either or both the premise and hypothesis.
+The explanation should be succinct and no more than a single sentence long. It should not trivially repeat the premise or the hypothesis and must not itself contradict the premise. The explanation should also read naturally in the context as a continuation of the premise, without explicitly using the term 'premise' or 'hypothesis' to refer to the premise or hypothesis.
+Your final output should be a single sentence without any preamble.
+Premise: {{ premise }}
+Hypothesis: {{ hypothesis }}

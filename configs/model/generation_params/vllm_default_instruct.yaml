@@ -1,0 +1,12 @@
+# Using recommended params "Instruct (or non-thinking) mode for general tasks" from https://huggingface.co/Qwen/Qwen3.5-4B
+seed: 42
+temperature: 0.7
+top_p: 0.8
+presence_penalty: 1.5
+max_tokens: 256
+extra_body: # some sampling params go into extra_body when using openai API for locally host vllm models
+  top_k: 20
+  min_p: 0.0
+  repetition_penalty: 1.0
+  chat_template_kwargs:
+    enable_thinking: false

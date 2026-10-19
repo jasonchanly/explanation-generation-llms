@@ -1,0 +1,7 @@
+project_name: general_eval
+run_timestamp: ${now:%Y-%m-%d_%H-%M-%S-%f}
+wandb_training_run_id: null
+log_subdir: general_evaluation
+model_scoring_later: true
+export_samples_df: false
+max_context_len: 12000

@@ -1,0 +1,6 @@
+defaults:
+  - vllm_model
+  - _self_
+
+server_args:
+  add_custom_reasoning_end_str: true

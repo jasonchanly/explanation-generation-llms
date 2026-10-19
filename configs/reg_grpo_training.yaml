@@ -1,0 +1,48 @@
+defaults:
+  - base_config
+  - model@model: vllm_model         # Mounts configs/model/vllm_model.yaml under the `model` key
+  - model@judge_model: vllm_model
+  - override model/generation_params@judge_model.generation_params: vllm_default_instruct  # overrides the vllm_model default
+  - override model/generation_params@model.generation_params: vllm_default_instruct
+  - _self_
+
+model:
+  generation_params:
+    seed: null
+
+max_context_len: 1200
+
+grpo_config_args:
+  seed: 42
+  use_vllm: true  # vllm_mode="colocate" by default
+  vllm_mode: colocate
+  output_dir: ${log_subdir}
+  generation_kwargs: ${model.generation_params}
+  chat_template_kwargs:
+      enable_thinking: ${model.generation_params.extra_body.chat_template_kwargs.enable_thinking}
+  report_to: wandb
+  vllm_max_model_length: ${add:${grpo_config_args.max_completion_length},${max_context_len}}
+  max_completion_length: ${model.generation_params.max_tokens}
+  max_steps: -1
+  vllm_enable_sleep_mode: true  # added in attempt to resolve vllm free-up memory issue
+  beta: 0.0
+  epsilon_high: 0.28
+  learning_rate: 1e-6
+
+reward_funcs:
+  judge_reconciliation:
+    judge_criteria:
+      judge_reconciliation_by_nli:
+        judge_generate_args: ${judge_model.generation_params}
+
+train_dataset:
+  dataset_name: "chaosnli"
+  dataset_filter_criteria:
+      label: "contradiction"
+
+prompt_template:
+  prompt_template_name: "reconcile_contradiction/default-single"
+  prompt_template_kwargs:
+    allow_unresolvable: false
+
+post_train_eval: "last"  # last, null, all

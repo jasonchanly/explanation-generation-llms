@@ -1,0 +1,20 @@
+defaults:
+  - reg_stage1
+  - model@model: openai_model
+  - _self_
+
+log_subdir: reg_eval_control_llm_generated_adversarial_explanations
+
+model:
+  model_name: "gpt-5.6-terra"
+  generation_params:
+    reasoning_effort: "medium"
+
+tasks:
+  "src/eval_tasks.py@generic_reconcile_contradictions":
+    - dataset_name: chaosnli
+      prompt_template_name: "reconcile_contradiction/judge_control"
+      dataset_args:
+        dset_split: mnli
+        dataset_filter_criteria:
+          label: "contradiction"

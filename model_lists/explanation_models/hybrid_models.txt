@@ -1,0 +1,10 @@
+Qwen/Qwen3.5-0.8B
+Qwen/Qwen3.5-2B
+Qwen/Qwen3.5-4B
+Qwen/Qwen3.5-9B
+Qwen/Qwen3.5-27B
+google/gemma-4-E2B-it
+google/gemma-4-E4B-it
+google/gemma-4-12B-it
+google/gemma-4-26B-A4B-it
+google/gemma-4-31B-it

@@ -1,0 +1,8 @@
+Given a premise and a hypothesis, your task is to generate a plausible explanation that reconciles the apparent contradiction between the premise and the hypothesis. Specifically, when the explanation is combined with the premise, the hypothesis should follow from this combined context.
+The explanation should be succinct and no more than a single sentence long. It should not trivially repeat the premise or the hypothesis and must not itself contradict the premise. The explanation should also read naturally in the context as a continuation of the premise, without explicitly using the term 'premise' or 'hypothesis' to refer to the premise or hypothesis.
+Your final output should be a single sentence without any preamble.
+{% if allow_unresolvable %}
+If you think that the apparent contradiction between the premise and hypothesis cannot be reconciled with any plausible explanation, start your response with 'UNRESOLVABLE', followed by a brief explanation for why that is the case.
+{% endif %}
+Premise: {{ premise }}
+Hypothesis: {{ hypothesis }}
